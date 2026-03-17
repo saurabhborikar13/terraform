@@ -7,23 +7,23 @@ terraform {
   }
 }
 variable "container_name" {
-  type=string
+  type = string
 }
 variable "container_port" {
-  type =number
+  type = number
 }
-variable "image_name"{
-    type=string
+variable "image_name" {
+  type = string
 }
 
 resource "docker_image" "nginx_image" {
-    name=var.image_name
+  name = var.image_name
 }
 resource "docker_container" "nginx_container" {
-    name=var.container_name
-    image=docker_image.nginx_image.image_id
-    ports {
-      internal = 80
-      external = var.container_port
-    }
+  name  = var.container_name
+  image = docker_image.nginx_image.image_id
+  ports {
+    internal = 80
+    external = var.container_port
+  }
 }

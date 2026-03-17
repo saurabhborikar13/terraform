@@ -16,13 +16,15 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      # FORMAT CHECK
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+
+      # DAY1
       - name: Terraform Init (day1)
         run: |
           cd day1
           terraform init
-
-      - name: Terraform Format Check
-        run: terraform fmt -check -recursive
 
       - name: Terraform Validate (day1)
         run: |
@@ -33,3 +35,19 @@ jobs:
         run: |
           cd day1
           terraform plan
+
+      # DAY2
+      - name: Terraform Init (day2)
+        run: |
+          cd day2
+          terraform init
+
+      - name: Terraform Validate (day2)
+        run: |
+          cd day2
+          terraform validate
+
+      - name: Terraform Plan (day2)
+        run: |
+          cd day2
+          terraform plan -var-file="dev.tfvars"

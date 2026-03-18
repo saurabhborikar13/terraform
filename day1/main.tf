@@ -11,9 +11,9 @@ terraform {
 provider "local" {}
 
 variable "message" {
-  description = "Messsage to write into file"
+  description = "Messsage to write into file new"
   type        = string
-  default     = "Hello from Terraform"
+  default     = "Hello from Terraform" 
 }
 
 
